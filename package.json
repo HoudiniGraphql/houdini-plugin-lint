@@ -1,0 +1,53 @@
+{
+  "name": "houdini-plugin-lint",
+  "version": "1.0.0",
+  "description": "The lint plugin for houdini",
+  "keywords": [
+    "typescript",
+    "graphql",
+    "graphql-client"
+  ],
+  "homepage": "https://github.com/HoudiniGraphql/houdini-plugin-lint",
+  "funding": "https://github.com/sponsors/HoudiniGraphql",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HoudiniGraphql/houdini-plugin-lint.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "tests": "vitest",
+    "compile": "scripts build --plugin",
+    "typedefs": "scripts typedefs --plugin"
+  },
+  "devDependencies": {
+    "vitest": "^0.30.1"
+  },
+  "dependencies": {
+    "@kitql/helper": "0.6.1",
+    "houdini": "^1.1.7"
+  },
+  "files": [
+    "build"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./build/plugin-esm/index.js",
+      "require": "./build/plugin-cjs/index.js"
+    },
+    "./test": {
+      "import": "./build/test-esm/index.js",
+      "require": "./build/test-cjs/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "test": [
+        "build/test/index.d.ts"
+      ]
+    }
+  },
+  "main": "./build/plugin-cjs/index.js",
+  "types": "./build/plugin/index.d.ts"
+}
