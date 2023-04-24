@@ -10,7 +10,9 @@ describe("plugin", () => {
       }),
     ];
 
-    const { pluginRoot, docs: docOut } = await test_pipeline(docsIn);
+    const { pluginRoot, docs: docOut } = await test_pipeline(docsIn, {
+      schema: `type Query { version: String }`,
+    });
 
     expect("docs").toEqual("example");
   });

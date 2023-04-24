@@ -17,37 +17,33 @@
   "type": "module",
   "scripts": {
     "tests": "vitest",
-    "compile": "scripts build --plugin",
-    "typedefs": "scripts typedefs --plugin"
+    "build": "tsup src/plugin/index.ts --format esm,cjs --dts"
   },
   "devDependencies": {
+    "@kitql/helper": "0.6.1",
+    "graphql": "^16.6.0",
+    "houdini": "^1.2.1",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4",
     "vitest": "^0.30.1"
   },
-  "dependencies": {
-    "@kitql/helper": "0.6.1",
-    "houdini": "^1.1.7"
+  "peerDependencies": {
+    "houdini": "^1.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
-    "build"
+    "dist/**"
   ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "import": "./build/plugin-esm/index.js",
-      "require": "./build/plugin-cjs/index.js"
-    },
-    "./test": {
-      "import": "./build/test-esm/index.js",
-      "require": "./build/test-cjs/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
-  },
-  "typesVersions": {
-    "*": {
-      "test": [
-        "build/test/index.d.ts"
-      ]
-    }
-  },
-  "main": "./build/plugin-cjs/index.js",
-  "types": "./build/plugin/index.d.ts"
+  }
 }
