@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "@kitql/helper": "0.6.1",
-    "graphql": "^16.6.0",
     "houdini": "^1.2.1",
     "tsup": "^6.7.0",
     "typescript": "^5.0.4",
